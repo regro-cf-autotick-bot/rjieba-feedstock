@@ -1,19 +1,19 @@
 {% set name = "rjieba" %}
-{% set version = "0.1.13" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3ff7396e645c6ebf8c780ac2d585a6c92ddc5e135be83b0da0da9f995ae62f46
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: b9a5a354bc54bf939ca61af76270dad83ae4bde2ed8721997210730181bf27e6
 
 build:
-  number: 2
+  number: 0
   script:
     - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 
 requirements:
@@ -36,7 +36,7 @@ test:
 about:
   home: https://github.com/messense/rjieba-py
   license: MIT
-  license_file: 
+  license_file:
     - THIRDPARTY.yml
     - LICENSE
   summary: jieba-rs Python binding
